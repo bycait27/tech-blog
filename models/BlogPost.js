@@ -28,10 +28,10 @@ BlogPost.init(
             allowNull: false,
             defaultValue: DataTypes.NOW,
         },
-        // foreign key to User's id 
+        // foreign key to User id 
         user_id: {
             type: DataTypes.INTEGER,
-            // reference user id
+            // reference User id
             references: {
                 model: 'user',
                 key: 'id',
