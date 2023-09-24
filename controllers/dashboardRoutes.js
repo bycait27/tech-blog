@@ -40,7 +40,7 @@ router.get('/', withAuth, async (req, res) => {
 // edit blogpost by id
 router.put('/edit/:id', withAuth, async (req, res) => {
     try {
-        const blogPostData = await BlogPost.findOne({
+        const blogPostData = await BlogPost.update({
             where: {
                 id: req.params.id,
             },
@@ -79,9 +79,10 @@ router.put('/edit/:id', withAuth, async (req, res) => {
 // delete blogpost by id
 router.delete('/edit/:id', withAuth, async (req, res) => {
     try {
-        const blogPostData = await BlogPost.findOne({
+        const blogPostData = await BlogPost.destroy({
             where: {
                 id: req.params.id,
+                user_id: req.session.user_id,
             },
             include: [
                 {
