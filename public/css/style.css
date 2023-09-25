@@ -1,0 +1,37 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+body {
+    background-color: #EBF6E1;
+}
+
+nav {
+    background-color: #1E0C08;
+    height: 6rem;
+}
+
+nav ul {
+    padding-top: 10px;
+}
+
+nav ul li {
+    list-style-type: none;
+    display: inline;
+    padding: 10px;
+    color: #EBF6E1;
+}
+
+nav h1 {
+    border: 5px solid #EBF6E1;
+    border-radius: 10px;
+    padding-right: 10px;
+    padding-left: 10px;
+    background-color: #EBF6E1;
+    margin-left: 50px;
+    margin-top: 13px;
+    color: #1E0C08;
+    display: inline-block;
+    box-shadow: 4px 4px #A4A4A4;
+}
