@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Tech Blog</title>
+    <link rel="stylesheet" href="../../public/css/style.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            {{!-- if the user is logged in, they will see 'logout' --}}
+            {{#if logged_in}}
+            <ul>
+                <a href="/"><li>Home</li></a>
+                <a href="/dashboard"><li>Dashboard</li></a>
+                <button id="logout" id="logout" class="logout">Logout</button>
+                {{else}}
+                {{!-- if the user is logged out, they will see 'login' --}}
+                <a href="/login"><li>Login</li></a>
+                {{/if}}
+            </ul>
+            <h1 href="/">The Tech Blog</h1>
+        </nav>
+    </header>
+
+    <main>
+        {{!-- <h3>Why MVC is so important</h3>
+        <p>Posted by Xandromus on 5/8/2020</p>
+        <div> --}}
+            <!-- <p>Posted by Xandromus on 5/8/2020</p> -->
+            {{!-- <p>MVC allows developers to maintain a true separation of concerns, devising their code between the Model layer for data, the View layer for design, and the Controller layer for application logic.</p>
+        </div> --}}
+
+        {{{ body }}}
+
+    </main>
+
+    {{!-- if the user is logged in, allow script for logout function --}}
+    {{#iif logged_in}}
+    <script src="../../public/js/logout.js"></script>
+    {{/if}}
+</body>
+
+</html>
