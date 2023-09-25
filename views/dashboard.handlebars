@@ -1,0 +1,17 @@
+{{#if blogposts.length}}
+<section class="your-blog-posts">
+    <ul>
+        {{#each blogposts as |blogpost| }}
+        <li>
+            {{> blogpost-info blogpost}}
+            <a href="/dashboard/edit/{{blogpost.id}}" class="edit-post"></a>
+        </li>
+        {{/each}}
+    </ul>
+</section>
+{{/if}}
+
+<div>
+    <a href="/dashboard/create-post"><button type="submit" class="new-post">+ New Post</button></a>
+</div>
+
