@@ -1,0 +1,8 @@
+<ol class="blog-posts">
+    {{!-- renders multiple blog posts with this format --}}
+    {{#each blogposts as |blogpost|}}
+    <li>
+        {{> blogpost-info blogpost}}
+    </li>
+    {{/each}}
+</ol>

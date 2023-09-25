@@ -1,0 +1,22 @@
+{{!-- reference blogposts from 'homepage.handlebars' --}}
+{{> blogpost-info blogpost}}
+
+{{!-- if the user is logged in, they can comment using this form --}}
+{{#if logged_in}}
+ <h3 class="comment-form-header"></h3>
+ <div>
+    <form id="comment-form">
+        <label for="comment">Comment</label><br>
+        <input class="comment" id="comment-content" type="text" name="comment"><br>
+        <input class="submit" type="submit" value="Submit">
+    </form>
+ </div>
+{{/if}}
+
+{{!-- adds the comments to the blogpost --}}
+{{> comments blogpost.comments}}
+
+{{!-- if the user is logged in, the script for adding a comment is used --}}
+{{#if logged_in}}
+<script src="../public/js/add-comment.js"></script>
+{{/if}}
