@@ -1,4 +1,4 @@
-{{!-- reference blogposts from 'homepage.handlebars' --}}
+{{!-- reference blogposts from 'homepage.handlebars'
 {{> blogpost-info blogpost}}
 
 {{!-- if the user is logged in, they can comment using this form --}}
@@ -19,4 +19,8 @@
 {{!-- if the user is logged in, the script for adding a comment is used --}}
 {{#if logged_in}}
 <script src="../public/js/add-comment.js"></script>
-{{/if}}
+{{/if}} --}}
+
+<div>
+    <h3>{{blogpost.title}}</h3>
+</div>
