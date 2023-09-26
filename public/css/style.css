@@ -1,3 +1,5 @@
+/* main.handlebars styling */
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -34,4 +36,25 @@ nav h1 {
     color: #1E0C08;
     display: inline-block;
     box-shadow: 4px 4px #A4A4A4;
+}
+
+/* homepage.handlebars styling */
+
+.blog-post-container {
+    border: 2px solid #1E0C08;
+    padding: 10px;
+    margin: 0px 15px 15px 15px;
+}
+
+.blog-post-home {
+    background-color: #1E0C08;
+    color: #EBF6E1;
+    margin: 15px 15px 0px 15px;
+    padding: 5px;
+    font-size: medium;
+}
+
+.blog-post-home a {
+    text-decoration: none;
+    color: #EBF6E1;
 }

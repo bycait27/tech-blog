@@ -1,10 +1,10 @@
- <h3 class="comment-header">Create New Post</h3>
+ <h3 class="header">Create New Post</h3>
         <div>
             <form id="new-post-form">
                 <label for="title">Title</label><br>
-                <input class="title" type="text" id="post-title" name="title"><br>
+                <input class="title" type="text" id="post-title" name="title" value="{{blogpost.title}}"><br>
                 <label for="content">Content</label><br>
-                <input class="content" type="text" id="post-content" name="content"><br>
+                <input class="content" type="text" id="post-content" name="content" value="{{blogpost.content}}"><br>
                 <input class="submit" type="submit" value="Create">
             </form>
         </div>
