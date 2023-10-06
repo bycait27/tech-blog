@@ -9,6 +9,10 @@ body {
     background-color: #EBF6E1;
 }
 
+a {
+    text-decoration: none;
+}
+
 nav {
     background-color: #1E0C08;
     height: 6rem;
@@ -57,4 +61,35 @@ nav h1 {
 .blog-post-home a {
     text-decoration: none;
     color: #EBF6E1;
+}
+
+/* login.handlebars styling */
+
+.login-container, .signup-container {
+    border: 2px solid #1E0C08;
+    padding: 10px;
+    margin: 0px 15px 15px 15px;
+}
+
+.login-header, .signup-header {
+    background-color: #1E0C08;
+    color: #EBF6E1;
+    margin: 15px 15px 0px 15px;
+    padding: 5px;
+    font-size: medium;
+}
+
+.login-form label, .signup-form label {
+    text-align: left;
+    padding: 10px;
+}
+
+.username, .password, .login-btn, .signup-btn {
+    width: 95%;
+    padding: 10px;
+    margin: 10px;
+}
+
+.login, .signup {
+    text-align: left;
 }
