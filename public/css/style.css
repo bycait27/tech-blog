@@ -63,6 +63,10 @@ nav h1 {
     color: #EBF6E1;
 }
 
+.blog-post-home p {
+    margin-top: 15px;
+}
+
 /* login.handlebars styling */
 
 .login-container, .signup-container {
