@@ -14,7 +14,7 @@
                 <a href="/"><li>Home</li></a>
                 <a href="/dashboard"><li>Dashboard</li></a>
                 <a href="/login"><li>Login</li></a>
-                <a href="/"><li>Logout</li></a>
+                <a id="logout" href="/"><li>Logout</li></a>
             </ul>
             <h1 href="/">The Tech Blog</h1>
         </nav>
@@ -28,7 +28,7 @@
 
     {{!-- if the user is logged in, allow script for logout function --}}
     {{#if logged_in}}
-    <script src="../../public/js/logout.js"></script>
+    <script src="/js/logout.js"></script>
     {{/if}}
 </body>
 
