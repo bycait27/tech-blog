@@ -97,3 +97,19 @@ nav h1 {
 .login, .signup {
     text-align: left;
 }
+
+.new-post {
+    margin: 15px 15px 0px 15px;
+    padding: 10px;
+    font-size: medium;
+    background-color: #1E0C08;
+    color: #EBF6E1;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.new-post-container {
+    display: flex;
+    justify-content: center;
+    padding-top: 10px;
+}

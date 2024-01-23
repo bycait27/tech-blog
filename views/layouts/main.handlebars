@@ -14,7 +14,9 @@
                 <a href="/"><li>Home</li></a>
                 <a href="/dashboard"><li>Dashboard</li></a>
                 <a href="/login"><li>Login</li></a>
+                {{#if logged_in}}
                 <a id="logout" href="/"><li>Logout</li></a>
+                {{/if}}
             </ul>
             <h1 href="/">The Tech Blog</h1>
         </nav>
