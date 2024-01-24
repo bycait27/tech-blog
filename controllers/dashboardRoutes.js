@@ -76,6 +76,13 @@ router.put('/edit/:id', withAuth, async (req, res) => {
     }
 });
 
+// get new blogpost
+router.get('/new', (req, res) => {
+    res.render('new-blogPost', {
+        logged_in: true
+    });
+});
+
 // delete blogpost by id
 router.delete('/edit/:id', withAuth, async (req, res) => {
     try {
