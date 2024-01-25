@@ -90,19 +90,34 @@ router.post('/', withAuth, async (req, res) => {
 // edit a blogpost
 router.put('/:id', withAuth, async (req, res) => {
     try {
-        const blogPostData = await BlogPost.update({
-            where: {
-                id: req.params.id,
-            },
-        });
+        console.log('Received data:', req.body);
 
-        if (!blogPostData) {
+        const [updatedRows] = await BlogPost.update(
+            {
+                title: req.body.title,
+                content: req.body.content,
+            },
+            {
+                where: {
+                    id: req.params.id,
+                },
+            }
+        );
+
+        console.log('Updated rows:', updatedRows);
+
+        if (updatedRows === 0) {
             res.status(404).json({ message: 'No blogpost found with this id!' });
             return;
         }
 
-    res.status(200).json(blogPostData);
+        // Fetch the updated blog post after the update operation
+        const updatedBlogPost = await BlogPost.findByPk(req.params.id);
+        console.log('Updated blog post:', updatedBlogPost);
+
+        res.status(200).json(updatedBlogPost);
     } catch (err) {
+        console.error(err);
         res.status(500).json(err);
     }
 });

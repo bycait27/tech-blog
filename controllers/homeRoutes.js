@@ -1,5 +1,4 @@
 const router = require("express").Router();
-const sequelize = require("../config/connection");
 const { BlogPost, User, Comment } = require("../models");
 
 // get all blogposts and render them to homepage

@@ -79,15 +79,16 @@ nav h1 {
 
 }
 
-/* login.handlebars + new-blogPost.handlebars + blogpost.handlebars (comment form) styling */
+/* login.handlebars + new-blogPost.handlebars + edit-blogPost.handlebars + 
+blogpost.handlebars (comment form) styling */
 
-.login-container, .signup-container, .new-post-form-container, .new-comment-container {
+.login-container, .signup-container, .new-post-form-container, .new-comment-container, .edit-post-container {
     border: 2px solid #1E0C08;
     padding: 10px;
     margin: 0px 15px 15px 15px;
 }
 
-.login-header, .signup-header, .new-post-header, .comment-form-header {
+.login-header, .signup-header, .new-post-header, .comment-form-header, .edit-post-header {
     background-color: #1E0C08;
     color: #EBF6E1;
     margin: 15px 15px 0px 15px;
@@ -95,12 +96,17 @@ nav h1 {
     font-size: medium;
 }
 
-.login-form label, .signup-form label, .new-post-form label, .comment-form label {
+.login-form label, .signup-form label, .new-post-form label, .comment-form label, .edit-post-form label {
     text-align: left;
     padding: 10px;
 }
 
-.username, .password, .login-btn, .signup-btn, .title, .content, .new-post-btn, .comment, .new-comment-btn {
+
+.edit-post-container label {
+    margin-left: 15px;
+}
+
+.username, .password, .login-btn, .signup-btn, .title, .content, .new-post-btn, .comment, .new-comment-btn, .delete-post-btn, .update-post-btn {
     width: 95%;
     padding: 10px;
     margin: 10px;
@@ -132,4 +138,9 @@ nav h1 {
 .blog-post-dash a {
     text-decoration: none;
     color: #EBF6E1;
+}
+
+.none {
+    margin: 10px;
+    text-align: center;
 }
