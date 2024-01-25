@@ -1,7 +1,7 @@
 {{!-- renders multiple blog posts with this format --}}
     {{#each blogPosts as |blogPost|}}
     <h3 class="blog-post-home">
-        <a href="/blogposts/{{blogPost.id}}">{{blogPost.title}}</a>
+        <a class="post-link" href="/blogposts/{{blogPost.id}}">{{blogPost.title}}</a>
                 <p>Posted by {{blogPost.user.username}} on {{format_date blogPost.date_created}}</p>
     </h3>
     <div class="blog-post-container">

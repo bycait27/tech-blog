@@ -56,6 +56,9 @@ nav h1 {
     margin: 15px 15px 0px 15px;
     padding: 5px;
     font-size: medium;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 .blog-post-home a {
@@ -112,4 +115,8 @@ nav h1 {
     display: flex;
     justify-content: center;
     padding-top: 10px;
+}
+
+.post-link:hover {
+    text-decoration: underline;
 }
