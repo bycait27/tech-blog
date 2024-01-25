@@ -70,6 +70,10 @@ nav h1 {
     margin-top: 15px;
 }
 
+.post-link:hover {
+    text-decoration: underline;
+}
+
 /* login.handlebars styling */
 
 .login-container, .signup-container {
@@ -101,6 +105,8 @@ nav h1 {
     text-align: left;
 }
 
+/* create blog post form styling */
+
 .new-post {
     margin: 15px 15px 0px 15px;
     padding: 10px;
@@ -115,8 +121,4 @@ nav h1 {
     display: flex;
     justify-content: center;
     padding-top: 10px;
-}
-
-.post-link:hover {
-    text-decoration: underline;
 }
