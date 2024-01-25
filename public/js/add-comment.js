@@ -5,15 +5,18 @@ const newCommentFormHandler = async (event) => {
     const comment = document.getElementById('comment-content').value.trim();
 
     // get blogpost id
-    const blogPostId = window.location.toString().split('/')[
+    const blogpost_id = window.location.toString().split('/')[
         window.location.toString().split('/').length - 1
     ];
+
+    console.log(comment);
+    console.log(blogpost_id);
 
     if (comment) {
         // send a POST request to api endpoint
         const response = await fetch('/api/comments', {
             method: 'POST',
-            body: JSON.stringify({ blogPostId, comment }),
+            body: JSON.stringify({ blogpost_id, comment }),
             headers: { 'Content-Type': 'application/json' },
         });
 

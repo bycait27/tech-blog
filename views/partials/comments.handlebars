@@ -1,9 +1,9 @@
 <section class="comments">
     {{#each this}}
     <h3 class="comment-header"></h3>
-    <div class="comment">
-        <p class="comment-class">{{comment.content}}</p>
-        <p class="author">{{user.username}}, {{format_date comment.date_created}}</p>
+    <div class="comment-container">
+        <p class="comment-class">{{content}}</p>
+        <p class="author">--{{user.username}}, {{format_date date_created}}</p>
     </div>
     {{/each}}
 </section>
