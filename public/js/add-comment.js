@@ -2,7 +2,7 @@ const newCommentFormHandler = async (event) => {
     event.preventDefault();
 
     // collect values from comment form
-    const comment = doccument.querySelector('#comment-content').value.trim();
+    const comment = document.getElementById('comment-content').value.trim();
 
     // get blogpost id
     const blogPostId = window.location.toString().split('/')[
@@ -10,7 +10,7 @@ const newCommentFormHandler = async (event) => {
     ];
 
     if (comment) {
-        // send a POST request to apu endpoint
+        // send a POST request to api endpoint
         const response = await fetch('/api/comments', {
             method: 'POST',
             body: JSON.stringify({ blogPostId, comment }),
