@@ -77,7 +77,7 @@ router.put('/edit/:id', withAuth, async (req, res) => {
 });
 
 // get new blogpost
-router.get('/new', (req, res) => {
+router.get('/new', withAuth, (req, res) => {
     res.render('new-blogPost', {
         logged_in: true
     });

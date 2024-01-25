@@ -1,3 +1,8 @@
+{{!-- render blog post --}}
+{{> blogpost-list blogPost}}
+{{!-- render comments --}}
+{{> comments blogPost.comments}}
+
 {{!-- if the user is logged in, they can comment using this form --}}
 {{#if logged_in}}
  <h3 class="comment-form-header"></h3>
