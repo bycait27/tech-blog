@@ -64,10 +64,22 @@ router.get('/:id', async (req, res) => {
 // create a blogpost
 router.post('/', withAuth, async (req, res) => {
     try {
+        const { title, content } = req.body;
+        const user_id = req.session.user_id;
+
+        console.log('Received data:', { title, content, user_id });
+
+        const user = await User.findByPk(user_id);
+        const author = user.username;
+
         const blogPostData = await BlogPost.create({
-            ...req.body,
-            user_id: req.session.user_id,
+            title,
+            content, 
+            author,
+            user_id,
         });
+
+        console.log('Blogpost created:', blogPostData);
 
         res.status(200).json(blogPostData);
     } catch (err) {

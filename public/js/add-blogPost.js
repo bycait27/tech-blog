@@ -5,6 +5,9 @@ const newPostFormHandler = async (event) => {
     const title = document.querySelector('#post-title').value;
     const content = document.querySelector('#post-content').value;
 
+    console.log(title);
+    console.log(content);
+
     if (title && content) {
         // send a POST request to api endpoint
         const response = await fetch('/api/blogposts', {
@@ -12,6 +15,8 @@ const newPostFormHandler = async (event) => {
             body: JSON.stringify({ title, content }),
             headers: { 'Content-Type': 'application/json' },
         });
+
+        console.log(response);
 
         if (response.ok) {
             // if successful, redirect the broswer to the dashboard page

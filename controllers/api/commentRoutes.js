@@ -16,16 +16,6 @@ router.get('/', async (req, res) => {
 
 // create new comment 
 router.post('/', withAuth, async (req, res) => {
-    // try {
-    //     const { blogpost_id, comment } = req.body;
-    //     const user_id = req.session.user_id;
-
-    //     const commentData = await Comment.create({
-    //         blogpost_id,
-    //         comment,
-    //         user_id,
-    //     });
-    //     res.status(200).json(commentData);
     try {
         const { blogpost_id, comment } = req.body;
         const user_id = req.session.user_id;
@@ -34,7 +24,7 @@ router.post('/', withAuth, async (req, res) => {
 
         const commentData = await Comment.create({
             blogpost_id,
-            content: comment, // Update attribute name to 'content'
+            content: comment, 
             user_id,
         });
 

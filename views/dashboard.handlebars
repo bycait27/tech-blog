@@ -1,13 +1,10 @@
-{{#if blogposts.length}}
+{{#if blogPosts.length}}
 <section class="your-blog-posts">
-    <ul>
-        {{#each blogposts as |blogpost| }}
-        <li>
-            {{> blogpost-info blogpost}}
-            <a href="/dashboard/edit/{{blogpost.id}}" class="edit-post"></a>
-        </li>
-        {{/each}}
-    </ul>
+            {{#each blogPosts as |blogPost|}}
+    {{> dashboard-list}}
+    {{/each}}
+    {{else}}
+   <p>No blog posts found.</p>
 </section>
 {{/if}}
 

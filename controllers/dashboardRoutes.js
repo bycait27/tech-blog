@@ -10,6 +10,7 @@ router.get('/', withAuth, async (req, res) => {
             where: {
                 user_id: req.session.user_id,
             },
+            attributes: ["id", "title", "content", "date_created"],
             include: [
                 {
                     model: Comment,
@@ -26,11 +27,14 @@ router.get('/', withAuth, async (req, res) => {
             ],
         });
 
+        console.log("User ID from session:", req.session.user_id);
+        console.log("Generated SQL Query:", blogPostData.toString());
+
         const blogPosts = blogPostData.map((blogPost) => blogPost.get({ plain: true }));
 
         res.render('dashboard', {
             blogPosts,
-            logged_in: true
+            logged_in: true,
         });
     } catch (err) {
         res.status(500).json(err);

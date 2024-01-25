@@ -50,7 +50,7 @@ nav h1 {
     margin: 0px 15px 15px 15px;
 }
 
-.blog-post-home, .comment-header {
+.blog-post-home, .comment-header, .blog-post-dash {
     background-color: #1E0C08;
     color: #EBF6E1;
     margin: 15px 15px 0px 15px;
@@ -126,4 +126,10 @@ nav h1 {
     display: flex;
     justify-content: center;
     padding-top: 10px;
+}
+
+/* dashboard.handlebars styling */
+.blog-post-dash a {
+    text-decoration: none;
+    color: #EBF6E1;
 }
