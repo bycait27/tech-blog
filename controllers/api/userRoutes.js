@@ -48,10 +48,12 @@ router.get('/:id', async (req, res) => {
     }
 });
 
-// create user
+// create user/ sign-up
 router.post('/', async (req, res) => {
     try {
+      console.log('Creating user with:', req.body);
         const userData = await User.create(req.body);
+        console.log('User created:', userData);
 
         req.session.save(() => {
             req.session.user_id = userData.id;
@@ -60,7 +62,22 @@ router.post('/', async (req, res) => {
             res.status(200).json(userData);
         });
     } catch (err) {
-        res.status(500).json(err);
+      console.error('Error creating user:', err);
+
+      // check for specific error types
+      if (err.name === 'SequelizeUniqueConstraintError') {
+        return res.status(400).json({ message: 'Username already exists' });
+      }
+    
+      if (err.name === 'SequelizeValidationError') {
+        return res.status(400).json({ message: err.message });
+      }
+
+      res.status(500).json({
+        message: 'Error creating user',
+        error: err.message,
+        errorType: err.name
+      });
     }
 });
 
@@ -80,7 +97,7 @@ router.post('/login', async (req, res) => {
         return;
       }
   
-      const validPassword = await userData.checkPassword(req.body.password);
+      const validPassword = userData.checkPassword(req.body.password);
   
       if (!validPassword) {
         res
@@ -99,7 +116,8 @@ router.post('/login', async (req, res) => {
       });
   
     } catch (err) {
-      res.status(400).json(err);
+      console.error('Login error:', err);
+      res.status(400).json({ message: 'Server error during login', error: err.message });
     }
   });
 
