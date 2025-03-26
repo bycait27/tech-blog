@@ -84,22 +84,34 @@ router.post('/', async (req, res) => {
 // login
 router.post('/login', async (req, res) => {
     try {
-      const userData = await User.findOne({ where: { username: req.body.username } });
+      console.log('Login attempt for user:', req.body.username);
+
+       // find the user in the database - add order to ensure we get the most recent user record
+       const userData = await User.findOne({ 
+        where: { username: req.body.username },
+        order: [['id', 'DESC']] // get the most recently created user with this username
+    });
 
       console.log('Received username:', req.body.username);
       console.log('Received password:', req.body.password);
       console.log('Found user data:', userData);
   
       if (!userData) {
+        console.log('User not found:', req.body.username);
         res
           .status(400)
           .json({ message: 'Incorrect username or password, please try again' });
         return;
       }
+
+      console.log('User found, checking password');
   
       const validPassword = userData.checkPassword(req.body.password);
+
+      console.log('Password validation result:', validPassword);
   
       if (!validPassword) {
+        console.log('Invalid password for user:', req.body.username);
         res
           .status(400)
           .json({ message: 'Incorrect username or password, please try again' });
@@ -110,14 +122,14 @@ router.post('/login', async (req, res) => {
         req.session.user_id = userData.id;
         req.session.logged_in = true;
 
-        console.log('Session data:', req.session);
-        
+        console.log('Login successful for user:', req.body.username);
         res.json({ user: userData, message: 'You are now logged in!' });
+        console.log('Session data:', req.session);
       });
   
     } catch (err) {
       console.error('Login error:', err);
-      res.status(400).json({ message: 'Server error during login', error: err.message });
+      res.status(500).json({ message: 'Server error during login', error: err.message });
     }
   });
 

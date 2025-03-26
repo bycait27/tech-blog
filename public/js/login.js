@@ -6,21 +6,30 @@ const loginFormHandler = async (event) => {
     const password = document.querySelector('#password-login').value.trim();
   
     if (username && password) {
-      // send a POST request to the API endpoint
-      const response = await fetch('/api/users/login', {
-        method: 'POST',
-        body: JSON.stringify({ username, password }),
-        headers: { 'Content-Type': 'application/json' },
-      });
-      console.log(username);
-      console.log(password);
-  
-      if (response.ok) {
-        // if successful, redirect the browser to the profile page
-        document.location.replace('/dashboard');
-      } else {
-        alert(response.statusText);
+      try {
+          // send a POST request to the API endpoint
+          const response = await fetch('/api/users/login', {
+              method: 'POST',
+              body: JSON.stringify({ username, password }),
+              headers: { 'Content-Type': 'application/json' },
+          });
+          
+          console.log(username);
+          console.log(password);
+          
+          if (response.ok) {
+              // if successful, redirect the browser to the profile page
+              document.location.replace('/dashboard');
+          } else {
+              const errorData = await response.json();
+              alert(`Login failed: ${errorData.message || 'Please check your credentials and try again.'}`);
+          }
+      } catch (error) {
+          console.error('Login error:', error);
+          alert('An error occurred during login. Please try again.');
       }
+    } else {
+        alert('Please enter both username and password');
     }
   };
   
