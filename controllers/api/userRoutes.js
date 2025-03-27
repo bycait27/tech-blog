@@ -254,5 +254,40 @@ router.get('/session-check', (req, res) => {
     });
   }
 });
+
+// password reset endpoint
+router.get('/reset-password/:username/:password', async (req, res) => {
+  try {
+    const { username, password } = req.params;
+    
+    if (!username || !password || password.length < 8) {
+      return res.status(400).json({ 
+        message: 'Username required and password must be at least 8 characters' 
+      });
+    }
+    
+    // find the user
+    const user = await User.findOne({ 
+      where: { username }
+    });
+    
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+    
+    // update the password
+    user.password = password;
+    await user.save(); // this will trigger the beforeUpdate hook to hash the password
+    
+    res.status(200).json({ 
+      message: `Password for ${username} has been reset successfully`,
+      username,
+      id: user.id
+    });
+  } catch (err) {
+    console.error('Password reset error:', err);
+    res.status(500).json({ message: 'Error resetting password', error: err.message });
+  }
+});
   
   module.exports = router;
