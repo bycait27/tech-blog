@@ -44,7 +44,7 @@ nav h1 {
 
 /* homepage.handlebars styling */
 
-.blog-post-container, .comment-container {
+/* .blog-post-container, .comment-container {
     border: 2px solid #1E0C08;
     padding: 10px;
     margin: 0px 15px 15px 15px;
@@ -77,12 +77,12 @@ nav h1 {
 .post-comment-header {
     margin-left: 20px;
 
-}
+} */
 
 /* login.handlebars + new-blogPost.handlebars + edit-blogPost.handlebars + 
 blogpost.handlebars (comment form) styling */
 
-.login-container, .signup-container, .new-post-form-container, .new-comment-container, .edit-post-container {
+/* .login-container, .signup-container, .new-post-form-container, .new-comment-container, .edit-post-container {
     border: 2px solid #1E0C08;
     padding: 10px;
     margin: 0px 15px 15px 15px;
@@ -114,11 +114,11 @@ blogpost.handlebars (comment form) styling */
 
 .login, .signup {
     text-align: left;
-}
+} */
 
 /* new blog post button styling */
 
-.new-post {
+/* .new-post {
     margin: 15px 15px 0px 15px;
     padding: 10px;
     font-size: medium;
@@ -132,10 +132,10 @@ blogpost.handlebars (comment form) styling */
     display: flex;
     justify-content: center;
     padding-top: 10px;
-}
+} */
 
 /* dashboard.handlebars styling */
-.blog-post-dash a {
+/* .blog-post-dash a {
     text-decoration: none;
     color: #EBF6E1;
 }
@@ -143,4 +143,4 @@ blogpost.handlebars (comment form) styling */
 .none {
     margin: 10px;
     text-align: center;
-}
+} */

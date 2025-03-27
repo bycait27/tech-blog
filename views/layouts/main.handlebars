@@ -6,6 +6,7 @@
     <title>The Tech Blog</title>
     <link rel="stylesheet" href="/css/main.css">
     <link rel="stylesheet" href="/css/homepage.css">
+    <link rel="stylesheet" href="/css/dashboard.css">
 </head>
 
 <body>
@@ -26,11 +27,18 @@
         <nav class="navbar">
             <div>
                 <ul class="link-list">
-                    <a class="link" href="/"><li>> Home</li></a>
-                    <a class="link" href="/dashboard"><li>> Dashboard</li></a>
-                    <a class="link" href="/login"><li>> Login</li></a>
+                    <a class="link" href="/">
+                        <li> <span class="arrow">></span> Home</li>
+                    </a>
+                    <a class="link" href="/dashboard">
+                        <li> <span class="arrow">></span> Dashboard</li></a>
+                    <a class="link" href="/login">
+                        <li> <span class="arrow">></span> Login</li>
+                    </a>
                     {{#if logged_in}}
-                    <a class="link" id="logout" href="/"><li>> Logout</li></a>
+                    <a class="link" id="logout" href="/">
+                        <li> <span class="arrow">></span> Logout</li>
+                    </a>
                     {{/if}}
                 </ul>
             </div>
