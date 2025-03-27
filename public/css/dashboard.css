@@ -12,6 +12,7 @@
     justify-content: center;
     display: flex;
     align-items: center;
+    width: 100%; /* ensure container takes full width for centering */
 }
 
 .new-post {
@@ -30,7 +31,100 @@
     color: #729FCF;
 }
 
+.new-post-form-container, .edit-post-container {
+    border: #fafafa84 solid 2px;
+    padding: 20px;
+    max-width: 600px; /* set a maximum width */
+    width: 80%; /* take up 80% of the container width up to max-width */
+    margin: 0 auto; /* center the container horizontally */
+    box-sizing: border-box; /* include padding in width calculation */
+}
+
+.new-post-header, .edit-post-header {
+    margin: 15px;
+    text-align: center; /* center the header text */
+}
+
+.new-post-form-container label, .new-post-form-container input, 
+.edit-post-container label, .edit-post-container textarea, 
+.edit-post-container input {
+    margin: 10px;
+    box-sizing: border-box; /* include padding in width calculation */
+}
+
+.new-post-form-container input, .edit-post-container input {
+    color: #1a1a1a;
+    width: calc(100% - 20px); /* account for margins */
+}
+
+.edit-post-container input, .edit-post-container textarea, 
+.new-post-form-container input, .new-post-form-container textarea {
+    width: calc(100% - 20px); /* account for margins */
+}
+
+/* add these styles to align elements properly */
+
+/* ensure consistent styling for both inputs and textareas */
+.new-post-form-container input, 
+.new-post-form-container textarea,
+.edit-post-container input,
+.edit-post-container textarea {
+    color: #1a1a1a;
+    width: calc(100% - 20px); /* account for margins */
+    margin: 10px;
+    box-sizing: border-box; /* include padding in width calculation */
+    display: block; /* ensures each input/textarea is on its own line */
+    padding: 8px; /* consistent padding */
+}
+
+/* style labels consistently */
+.new-post-form-container label,
+.edit-post-container label {
+    margin: 10px;
+    margin-bottom: 5px; /* less space below labels */
+    display: block; /* each label on its own line */
+}
+
+.new-post-form-container label,
+.edit-post-container label {
+    margin-top: 15px; /* space between form elements */
+}
+
+/* first label should not have extra top margin */
+.new-post-form-container label:first-of-type,
+.edit-post-container label:first-of-type {
+    margin-top: 0;
+}
+
+.new-post-btn, .update-post-btn, .delete-post-btn {
+    color: #1a1a1a;
+    background-color: #AD7FA8;
+    font-size: medium;
+    font-weight: bold;
+    padding: 8px;
+    margin: 10px;
+}
+
 .new-post:hover {
     background-color: #cda0c7;
     cursor: pointer;
+}
+
+.new-post-btn:hover, .update-post-btn:hover, .delete-post-btn:hover {
+    background-color: #cda0c7;
+    cursor: pointer;
+}
+
+textarea {
+    min-height: 150px; /* make textareas deeper */
+    resize: vertical; /* allow users to resize vertically if needed */
+    padding: 10px;
+    line-height: 1.5;
+    color: #1a1a1a;
+}
+
+.edit-post-container textarea, 
+.new-post-form-container textarea {
+    width: calc(100% - 20px); /* account for margins */
+    min-height: 200px; /* even deeper for post content */
 }
