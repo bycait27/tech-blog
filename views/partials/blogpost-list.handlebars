@@ -1,15 +1,13 @@
 {{!-- render blog posts --}}
 <div class="blog-post-container">
     <div class="blog-post-header">
-        <p class="post-title">{{title}}</p>
+        <a class="post-title" href="/blogpost/{{id}}">{{title}}</a>
         <p>Posted by <span class="user">{{user.username}}</span> | {{format_date date_created}}</p>
     </div>
     <div class="post-content">
         <p>{{content}}</p>
     </div>
     <div>
-        <a class="read-link" href="/blogpost/{{id}}">Read more ...</a>
+        {{!-- <a class="read-link" href="/blogpost/{{id}}">Read more ...</a> --}}
     </div>
-    {{!-- <div class="blog-divider"></div> --}}
 </div>
-<div class="blog-divider"></div>

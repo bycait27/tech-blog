@@ -1,0 +1,50 @@
+.new-comment-container, .comments {
+    padding: 10px; 
+    margin: 10px 40px 10px 40px;
+}
+
+.post-comment-header {
+    margin-left: 70px;
+}
+
+.new-comment-container {
+    border: #fafafa84 solid 2px;
+    margin: 65px;
+    padding: 20px;
+}
+
+.new-comment-container label, .new-comment-container input {
+    margin: 10px;
+}
+
+.new-comment-container input {
+    color: #1a1a1a;
+}
+
+.comment-container {
+    border: #fafafa84 solid 2px;
+    padding: 20px;
+    margin: 15px;
+}
+
+.comments p {
+    margin: 10px;
+}
+
+.new-comment-btn {
+    color: #1a1a1a;
+    background-color: #AD7FA8;
+    font-size: medium;
+    font-weight: bold;
+    padding: 8px;
+    margin: 10px;
+}
+
+.author {
+    color: #EDD400;
+}
+
+.new-comment-btn:hover {
+    background-color: #cda0c7;
+    cursor: pointer;
+}

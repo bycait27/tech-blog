@@ -15,16 +15,11 @@
 
 .blog-post-container {
     margin: 50px;
-}
-
-.blog-divider {
-    border: #fafafa dashed 1px;
-    margin: 25px;
-    width: 100%;
+    border-bottom: #fafafa84 dashed 2px;
 }
 
 /* hover states */
-.read-link:hover {
+.post-title:hover {
     text-decoration: underline;
     cursor: pointer;
 }
