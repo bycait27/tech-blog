@@ -1,7 +1,7 @@
 const newCommentFormHandler = async (event) => {
     event.preventDefault();
 
-    // collect values from comment form
+    // collect values from comment form - works with textarea
     const comment = document.getElementById('comment-content').value.trim();
 
     // get blogpost id

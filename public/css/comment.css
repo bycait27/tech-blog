@@ -1,50 +1,98 @@
+/* comment container and section styling */
 .new-comment-container, .comments {
     padding: 10px; 
-    margin: 10px 40px 10px 40px;
+    margin: 30px; 
 }
 
 .post-comment-header {
-    margin-left: 70px;
+    margin-left: 40px; /* match the container margin */
+    margin-bottom: 15px;
+    color: #fafafa;
 }
 
+/* new comment form */
 .new-comment-container {
     border: #fafafa84 solid 2px;
-    margin: 65px;
-    padding: 20px;
+    padding: 15px;
+    max-width: 500px;
+    margin: 20px 40px;
 }
 
-.new-comment-container label, .new-comment-container input {
-    margin: 10px;
+/* form elements styling */
+.new-comment-container label {
+    margin: 5px 10px; 
+    margin-bottom: 3px; 
+    display: block;
 }
 
-.new-comment-container input {
+.new-comment-container input,
+.new-comment-container textarea {
     color: #1a1a1a;
+    width: calc(100% - 20px);
+    margin: 5px 10px; 
+    padding: 6px; 
+    display: block;
+    box-sizing: border-box;
 }
 
+#comment-content {
+    min-height: 60px; 
+    resize: vertical;
+    padding: 8px; 
+    line-height: 1.4;
+}
+
+/* button container */
+.form-button-container {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 8px; 
+}
+
+/* button styling */
+.new-comment-btn {
+    color: #1a1a1a;
+    background-color: #AD7FA8;
+    font-size: medium;
+    font-weight: bold;
+    padding: 6px 10px; 
+    margin: 5px 0; 
+    width: auto;
+    min-width: 90px; 
+}
+
+.new-comment-btn:hover {
+    background-color: #cda0c7;
+    cursor: pointer;
+}
+
+/* comment display styling */
 .comment-container {
     border: #fafafa84 solid 2px;
     padding: 20px;
-    margin: 15px;
+    margin-bottom: 15px; 
+    width: calc(100% - 80px); 
 }
 
 .comments p {
     margin: 10px;
 }
 
-.new-comment-btn {
-    color: #1a1a1a;
-    background-color: #AD7FA8;
-    font-size: medium;
-    font-weight: bold;
-    padding: 8px;
-    margin: 10px;
-}
-
 .author {
     color: #EDD400;
+    font-weight: bold;
 }
 
-.new-comment-btn:hover {
-    background-color: #cda0c7;
-    cursor: pointer;
+.comment-date {
+    color: #8f8f8f;
+    font-size: 0.9em;
+    margin-left: 5px;
+}
+
+/* make "No Comments" look good too, but aligned */
+.no-comments {
+    text-align: left; 
+    color: #8f8f8f;
+    font-style: italic;
+    margin: 20px 40px; 
 }

@@ -1,18 +1,25 @@
 {{!-- render blog post --}}
 <div class="comment-section">
     {{> blogpost-list blogPost}}
-    <h3 class="post-comment-header">Comments</h3>
-    {{!-- render comments --}}
-    {{> comments blogPost.comments}}
+    
+    {{!-- conditionally display header based on whether there are comments --}}
+    {{#if blogPost.comments.length}}
+        <h3 class="post-comment-header">Comments</h3>
+        {{!-- render comments --}}
+        {{> comments blogPost.comments}}
+    {{else}}
+        <h3 class="post-comment-header">No Comments</h3>
+    {{/if}}
 
     {{!-- if the user is logged in, they can comment using this form --}}
     {{#if logged_in}}
-    {{!-- <h3 class="comment-form-header"></h3> --}}
     <div class="new-comment-container">
         <form id="comment-form">
-            <label for="comment">New Comment</label><br>
-            <input class="comment" id="comment-content" type="text" name="comment"><br>
-            <input class="new-comment-btn" type="submit" value="Submit">
+            <label for="comment">New Comment</label>
+            <textarea class="comment" id="comment-content" name="comment"></textarea>
+            <div class="form-button-container">
+                <input class="new-comment-btn" type="submit" value="Submit">
+            </div>
         </form>
     </div>
     {{/if}}
