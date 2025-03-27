@@ -4,27 +4,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Tech Blog</title>
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/main.css">
 </head>
 
 <body>
-    <header>
-        <nav>
-            <ul>
-                <a href="/"><li>Home</li></a>
-                <a href="/dashboard"><li>Dashboard</li></a>
-                <a href="/login"><li>Login</li></a>
-                {{#if logged_in}}
-                <a id="logout" href="/"><li>Logout</li></a>
-                {{/if}}
-            </ul>
-            <h1 href="/">The Tech Blog</h1>
+    <header class="header">
+        <div class="title">
+            <p class="ascii-title" href="/">
+                ████████╗██╗  ██╗███████╗    ████████╗███████╗ ██████╗██╗  ██╗    ██████╗ ██╗      ██████╗  ██████╗ 
+                ╚══██╔══╝██║  ██║██╔════╝    ╚══██╔══╝██╔════╝██╔════╝██║  ██║    ██╔══██╗██║     ██╔═══██╗██╔════╝ 
+                   ██║   ███████║█████╗         ██║   █████╗  ██║     ███████║    ██████╔╝██║     ██║   ██║██║  ███╗
+                   ██║   ██╔══██║██╔══╝         ██║   ██╔══╝  ██║     ██╔══██║    ██╔══██╗██║     ██║   ██║██║   ██║
+                   ██║   ██║  ██║███████╗       ██║   ███████╗╚██████╗██║  ██║    ██████╔╝███████╗╚██████╔╝╚██████╔╝
+                   ╚═╝   ╚═╝  ╚═╝╚══════╝       ╚═╝   ╚══════╝ ╚═════╝╚═╝  ╚═╝    ╚═════╝ ╚══════╝ ╚═════╝  ╚═════╝
+            </p>
+            <p class="version">
+                V1.0 Computing Knowledge Database
+            </p>
+        </div>
+        <nav class="navbar">
+            <div>
+                <ul class="link-list">
+                    <a class="link" href="/"><li>> Home</li></a>
+                    <a class="link" href="/dashboard"><li>> Dashboard</li></a>
+                    <a class="link" href="/login"><li>> Login</li></a>
+                    {{#if logged_in}}
+                    <a class="link" id="logout" href="/"><li>> Logout</li></a>
+                    {{/if}}
+                </ul>
+            </div>
         </nav>
     </header>
 
-    <main>
+    <div class="divider"></div>
 
-        {{{ body }}}
+    <main>
+        <div>
+            {{{ body }}}
+        </div>
 
     </main>
 
