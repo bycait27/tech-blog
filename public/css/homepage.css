@@ -1,0 +1,30 @@
+.blog-post-container a, .blog-post-container p {
+    padding: 10px;
+}
+
+.blog-post-header .post-title {
+    color: #EDD400;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.user, .read-link {
+    color: #729FCF;
+    text-decoration: none;
+}
+
+.blog-post-container {
+    margin: 50px;
+}
+
+.blog-divider {
+    border: #fafafa dashed 1px;
+    margin: 25px;
+    width: 100%;
+}
+
+/* hover states */
+.read-link:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}

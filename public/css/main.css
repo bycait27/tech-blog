@@ -57,11 +57,11 @@ body {
 /* hover states */
 .link:hover {
     text-decoration: underline;
-    color: rgb(95, 95, 255);
+    color: #729FCF;
 }
 
 .link-list li:hover {
-    color: rgb(95, 95, 255);
+    color: #729FCF;
 }
 
 /* responsive styles */
