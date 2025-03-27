@@ -228,5 +228,31 @@ router.post('/login', async (req, res) => {
       res.status(404).end();
     }
   });
+
+// session check endpoint
+router.get('/session-check', (req, res) => {
+  try {
+    res.json({
+      sessionExists: !!req.session,
+      session: {
+        id: req.session.id,
+        user_id: req.session.user_id,
+        logged_in: req.session.logged_in
+      },
+      cookie: req.session.cookie ? {
+        maxAge: req.session.cookie.maxAge,
+        httpOnly: req.session.cookie.httpOnly,
+        secure: req.session.cookie.secure,
+        sameSite: req.session.cookie.sameSite
+      } : 'No cookie data'
+    });
+  } catch (err) {
+    console.error('Session check error:', err);
+    res.status(500).json({ 
+      error: err.message,
+      session: req.session ? 'Session exists' : 'No session'
+    });
+  }
+});
   
   module.exports = router;
