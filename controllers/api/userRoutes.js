@@ -26,6 +26,53 @@ router.post('/test-user', async(req, res) => {
   }
 });
 
+// GET test user endpoint (easier to use in browser)
+router.get('/test-user', async(req, res) => {
+  try {
+    // delete user if exists
+    await User.destroy({ 
+      where: { username: 'testuser' }
+    });
+
+    // create a new test user with known credentials
+    const testUser = await User.create({
+      username: 'testuser',
+      password: 'password12345'
+    });
+
+    res.status(200).json({
+      message: 'Test user created successfully',
+      username: 'testuser',
+      password: 'password12345'
+    });
+  } catch (err) {
+    console.error('Error creating test user:', err);
+    res.status(500).json({ message: 'Error creating test user', error: err.message });
+  }
+});
+
+// GET diagnostic endpoint
+router.get('/check', async(req, res) => {
+  try {
+    // Get all users with password hashes (for debugging)
+    const users = await User.findAll();
+    
+    res.status(200).json({
+      message: 'Diagnostic check successful',
+      userCount: users.length,
+      users: users.map(user => ({
+        id: user.id,
+        username: user.username,
+        passwordHash: user.password ? user.password.substring(0, 20) + '...' : null
+      })),
+      environment: process.env.NODE_ENV || 'development'
+    });
+  } catch (err) {
+    console.error('Diagnostic error:', err);
+    res.status(500).json({ message: 'Error during diagnostic check', error: err.message });
+  }
+});
+
 // get all users
 router.get('/', async (req, res) => {
     try {
