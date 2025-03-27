@@ -1,6 +1,31 @@
 const router = require('express').Router();
 const { User, BlogPost, Comment } = require('../../models');
 
+// test user endpoint
+router.post('/test-user', async(req, res) => {
+  try {
+    // delete user if exists
+    await User.destroy({ 
+      where: { username: 'testuser' }
+    });
+
+    // create a new test user with known credentials
+    const testUser = await User.create({
+      username: 'testuser',
+      password: 'password12345'
+    });
+
+    res.status(200).json({
+      message: 'Test user created successfully',
+      username: 'testuser',
+      password: 'password12345'
+    });
+  } catch (err) {
+    console.error('Error creating test user:', err);
+    res.status(500).json({ message: 'Error creating test user', error: err.message });
+  }
+});
+
 // get all users
 router.get('/', async (req, res) => {
     try {
@@ -89,7 +114,7 @@ router.post('/login', async (req, res) => {
        // find the user in the database - add order to ensure we get the most recent user record
        const userData = await User.findOne({ 
         where: { username: req.body.username },
-        order: [['id', 'DESC']] // get the most recently created user with this username
+        // order: [['id', 'DESC']] // get the most recently created user with this username
     });
 
       console.log('Received username:', req.body.username);
@@ -104,7 +129,11 @@ router.post('/login', async (req, res) => {
         return;
       }
 
-      console.log('User found, checking password');
+      console.log('User found, ID:', userData.id, 'Checking password');
+
+      // check if the password is correct - add some debugging here
+      console.log('Comparing password from request with hashed password in DB');
+      console.log('Password from request length:', req.body.password.length);
   
       const validPassword = userData.checkPassword(req.body.password);
 
@@ -117,8 +146,17 @@ router.post('/login', async (req, res) => {
           .json({ message: 'Incorrect username or password, please try again' });
         return;
       }
+
+      // session debugging
+      console.log('Before session save - session object:', req.session);
   
-      req.session.save(() => {
+      req.session.save((err) => {
+        if (err) {
+          console.error('Session save error:', err);
+          res.status(500).json({ message: 'Error saving session', error: err.toString() });
+          return;
+        }
+
         req.session.user_id = userData.id;
         req.session.logged_in = true;
 
