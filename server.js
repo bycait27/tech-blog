@@ -13,7 +13,7 @@ const PORT = process.env.PORT || 3001;
 
 // proxy setting for heroku
 if (process.env.NODE_ENV === 'production') {
-  app/set('trust proxy', 1);
+  app.set('trust proxy', 1);
 }
 
 // set up Handlebars.js engine with custom helpers
