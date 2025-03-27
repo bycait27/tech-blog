@@ -1,0 +1,69 @@
+/* Login and Signup Form Styling */
+
+/* container styling to match post forms */
+.login-container, .signup-container {
+    border: #fafafa84 solid 2px;
+    padding: 20px;
+    max-width: 600px; /* set a maximum width */
+    width: 80%; /* take up 80% of the container width up to max-width */
+    margin: 0 auto; /* center the container horizontally */
+    margin-bottom: 30px; /* add space between login and signup forms */
+    box-sizing: border-box; /* include padding in width calculation */
+}
+
+/* header styling to match post headers */
+.login-header, .signup-header {
+    margin: 15px;
+    text-align: center; /* center the header text */
+}
+
+/* form elements styling to match post forms */
+.login-form input, .signup-form input {
+    color: #1a1a1a;
+    width: calc(100% - 20px); /* account for margins */
+    margin: 10px;
+    box-sizing: border-box; /* include padding in width calculation */
+    display: block; /* ensures each input is on its own line */
+    padding: 8px; /* consistent padding */
+}
+
+/* label styling to match post form labels */
+.login-form label, .signup-form label {
+    margin: 10px;
+    margin-bottom: 5px; /* less space below labels */
+    display: block; /* each label on its own line */
+}
+
+/* space between form elements */
+.login-form label, .signup-form label {
+    margin-top: 15px; /* space between form elements */
+}
+
+/* first label should not have extra top margin */
+.login-form label:first-of-type, .signup-form label:first-of-type {
+    margin-top: 0;
+}
+
+/* button styling to match post buttons */
+.login-btn, .signup-btn {
+    color: #1a1a1a;
+    background-color: #AD7FA8;
+    font-size: medium;
+    font-weight: bold;
+    padding: 8px;
+    margin: 10px;
+}
+
+/* button hover effect to match post buttons */
+.login-btn:hover, .signup-btn:hover {
+    background-color: #cda0c7;
+    cursor: pointer;
+}
+
+/* center the buttons */
+.login-btn, .signup-btn {
+    display: block;
+    margin: 20px auto 10px; /* top, horizontal, bottom margins */
+    width: auto; /* override the full-width setting for inputs */
+    min-width: 100px; /* minimum width for buttons */
+}
