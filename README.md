@@ -42,7 +42,7 @@ This project addresses the need for developers to have a dedicated space to publ
 - **Runtime Environment:** Node.js
 - **Framework:** Express.js
 - **Authentication:** Bcrypt, express-session
-- **Database:** JawsDB with Mysql
+- **Database:** JawsDB with MySQL
 - **ORM:** Sequelize  
 <!-- JavaScript   -->
 ### DevOps
