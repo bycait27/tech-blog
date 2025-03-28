@@ -70,7 +70,8 @@ cd the-tech-blog
 # install dependencies
 npm install
 
-# set up  and add environment variables
+# set up .env file in root of project 
+# add environment variables
 DB_NAME='blog_db'
 DB_USER='your_mysql_username'
 DB_PASSWORD='your_mysql_password'
