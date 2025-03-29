@@ -34,4 +34,67 @@ describe('User Model', () => {
         // attempt to create user without required fields
         await expect(User.create({})).rejects.toThrow();
     });
+
+    // test username uniqueness
+    it ('should not allow duplicate usernames', async () => {
+        await User.create({
+            username: 'uniqueuser',
+            password: 'password123',
+        });
+
+        await expect(User.create({
+            username: 'uniqueuser',
+            password: 'differentpassword'
+        })).rejects.toThrow();
+    });
+
+    // test password validation
+    it('should require password to be at least 8 characters long', async () => {
+        await expect(User.create({
+            username: 'validuser',
+            password: 'short' // less than 8 characters
+        })).rejects.toThrow();
+    });
+
+    // test password hashing hook
+    it('should hash the password when updating a user', async () => {
+        const user = await User.create({
+            username: 'updateuser',
+            password: 'password123'
+        });
+
+        const originalPassword = user.password;
+
+        // update user password
+        await user.update({ password: 'newpassword123' });
+
+        // password should be hashed and different from original
+        expect(user.password).not.toBe(originalPassword);
+        expect(user.password).not.toBe('newpassword123');
+    });
+
+    // test password checking method
+    it('should correctly verify passwords with checkPassword method', async () => {
+        const user = await User.create({
+            username: 'passwordchecker',
+            password: 'correctpassword123'
+        });
+
+        expect(user.checkPassword('correctpassword123')).toBe(true);
+        expect(user.checkPassword('wrongpassword')).toBe(false);
+    });
+
+    // test finding users
+    it('should find a user by username', async () => {
+        await User.create({
+            username: 'findme',
+            password: 'password123'
+        });
+
+        const foundUser = await User.findOne({ where: { username: 'findme' } });
+
+        expect(foundUser).toBeDefined();
+        expect(foundUser.username).toBe('findme');
+    });
+
 });
