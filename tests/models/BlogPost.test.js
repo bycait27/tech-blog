@@ -6,6 +6,7 @@ let testUser;
 // reset database before all tests
 beforeAll(async () => {
     await sequelize.sync({ force: true });
+    
     testUser = await User.create({
         username: 'blogposter',
         password: 'password123',

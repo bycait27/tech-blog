@@ -97,4 +97,8 @@ describe('User Model', () => {
         expect(foundUser.username).toBe('findme');
     });
 
+    // test user deletion??
+
+    // test cascading effects??
+
 });
