@@ -29,6 +29,7 @@ describe('User Model', () => {
         expect(user.password).not.toBe(userData.password);
     });
 
+    // test requirements
     it('should require username and password', async () => {
         // attempt to create user without required fields
         await expect(User.create({})).rejects.toThrow();
