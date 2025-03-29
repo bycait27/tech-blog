@@ -70,7 +70,7 @@ router.get('/edit/:id', withAuth, async (req, res) => {
 
         const blogPost = blogPostData.get({ plain: true });
 
-        res.render('edit-blogpost', {
+        res.render('edit-blogPost', {
             blogPost,
             logged_in: true
         });
@@ -81,7 +81,7 @@ router.get('/edit/:id', withAuth, async (req, res) => {
 
 // get new blogpost
 router.get('/new', withAuth, (req, res) => {
-    res.render('new-blogpost', {
+    res.render('new-blogPost', {
         logged_in: true
     });
 });
