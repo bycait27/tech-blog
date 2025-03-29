@@ -2,6 +2,8 @@
 
 A CMS-Style tech blog site for developers that follows the MVC paradigm.
 
+<img src="./assets/home.png" width="500" alt="Homepage">
+
 ## Table of Contents
 - [Overview](#overview)
 - [Features](#features)
@@ -27,10 +29,23 @@ This project addresses the need for developers to have a dedicated space to publ
 
 <!-- add screenshots to show features in use -->
 
-- **User Authentication:**  Secure login and registration powered by express-session.
-- **Blog Post Management:** Ability to create, edit, and delete blog posts.
-- **User Dashboard:** Users can access and manage their blog posts on their own dashboard.
-- **User Interaction:** Ability to comment on other user's posts.   
+- **User Authentication:**  Secure login and registration powered by express-session.  
+
+<img src="./assets/login-singup2.png" width="500" alt="Login and Signup">    
+
+- **Blog Post Management:** Ability to create, edit, and delete blog posts.    
+
+<img src="./assets/new-post.png" width="500" alt="Create New Post"> . 
+
+<img src="./assets/edit-post.png" width="500" alt="Edit Post">
+
+- **User Dashboard:** Users can access and manage their blog posts on their own dashboard.  
+
+<img src="./assets/dashboard.png" width="500" alt="User Dashboard">
+
+- **User Interaction:** Ability to comment on other user's posts.     
+
+<img src="./assets/blogpost-signedin.png" width="500" alt="Comments">
 
 ## Technologies
 
