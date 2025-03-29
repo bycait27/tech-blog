@@ -3,7 +3,14 @@ require('dotenv').config();
 
 let sequelize;
 
-if (process.env.JAWSDB_URL) {
+if (process.env.NODE_ENV === 'test') {
+  // use in-memory SQLite database for testing
+  sequelize = new Sequelize({
+    dialect: 'sqlite',
+    storage: ':memory:',
+    logging: false
+  });
+} else if (process.env.JAWSDB_URL) {
   sequelize = new Sequelize(process.env.JAWSDB_URL);
 } else {
   sequelize = new Sequelize(
