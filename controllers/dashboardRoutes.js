@@ -70,6 +70,7 @@ router.get('/edit/:id', withAuth, async (req, res) => {
 
         const blogPost = blogPostData.get({ plain: true });
 
+        // doesnt match actual file (heroku issue)
         res.render('edit-blogPost', {
             blogPost,
             logged_in: true
@@ -81,6 +82,7 @@ router.get('/edit/:id', withAuth, async (req, res) => {
 
 // get new blogpost
 router.get('/new', withAuth, (req, res) => {
+    // doesnt match actual file (heroku issue)
     res.render('new-blogPost', {
         logged_in: true
     });
