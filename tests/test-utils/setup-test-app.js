@@ -1,13 +1,15 @@
 const express = require('express');
 const session = require('express-session');
+const path = require('path');
 
 /**
  * creates and configures an Express app for testing routes
  * @param {object} routerModule - the router module to test
  * @param {string} mountPath - the path where the router should be mounted
+ * @param {object} options - additional options
  * @returns {object} the configured Express app
  */
-function setupTestApp(routerModule, mountPath = '/') {
+function setupTestApp(routerModule, mountPath = '/', options = {}) {
   const app = express();
   
   // configure session middleware
@@ -17,6 +19,15 @@ function setupTestApp(routerModule, mountPath = '/') {
     saveUninitialized: true,
     cookie: {}
   }));
+  
+  // if authenticated user provided, create pre-authenticated session
+  if (options.authUser) {
+    app.use((req, res, next) => {
+      req.session.logged_in = true;
+      req.session.user_id = options.authUser.id;
+      req.session.save(next);
+    });
+  }
   
   // configure express to parse JSON and handle forms
   app.use(express.json());
@@ -28,14 +39,6 @@ function setupTestApp(routerModule, mountPath = '/') {
     callback(null, JSON.stringify(options));
   });
   app.set('view engine', 'handlebars');
-  
-  // add helper for attaching authentication in tests
-  app.mockLoggedIn = (userId) => {
-    return (req) => {
-      req.session = { logged_in: true, user_id: userId };
-      return req;
-    };
-  };
   
   // mount the router
   app.use(mountPath, routerModule);
