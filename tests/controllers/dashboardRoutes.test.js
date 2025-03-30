@@ -36,15 +36,15 @@ describe('Dashboard Routes', () => {
         await sequelize.close();
     });
 
-    // GET routes
+    // test GET routes
     describe('GET /dashboard', () => {
+        // test GET all posts
         it('should redirect to login if not authenticated', async () => {
             const response = await request(app).get('/dashboard');
             expect(response.statusCode).toBe(302);
             expect(response.headers.location).toBe('/login');
         });
 
-        // GET all posts
         it('should render dashboard with user blog posts when authenticated', async () => {
             // create a pre-authenticated app instance
             const authenticatedApp = setupTestApp(
@@ -60,7 +60,7 @@ describe('Dashboard Routes', () => {
             expect(response.text).toContain('Test Dashboard Post');
         });
 
-        // GET post by id to edit
+        // test GET post by id to edit
         it('should redirect to login if not authenticated when trying to edit a post', async () => {
             const response = await request(app).get(`/dashboard/edit/${testBlogPost.id}`);
             expect(response.statusCode).toBe(302);
@@ -82,7 +82,7 @@ describe('Dashboard Routes', () => {
             expect(response.text).toContain('Test Dashboard Post');
         });
 
-        // GET new post 
+        // test GET new post 
         it('should redirect to login if not authenticated when trying to create a new post', async () => {
             const response = await request(app).get('/dashboard/new');
             expect(response.statusCode).toBe(302);
