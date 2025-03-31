@@ -206,7 +206,7 @@ describe('BlogPost Routes', () => {
     // test DELETE a blogpost by id
     describe('DELETE /api/blogposts/id', () => {
         // test for authenticated user
-        it('should delete a blog post by id', async () => {
+        it('should delete a blogpost by id', async () => {
             // create authenticated app
             const authApp = setupTestApp(
                 blogPostRoutes,
@@ -226,8 +226,11 @@ describe('BlogPost Routes', () => {
             expect(response.statusCode).toBe(302);
         });
 
-        // test for non-existent post
+        // TODO: test for non-existent post
         // it('should return 404 for blogpost not found', async () => {
         // });
+
+        // TODO: test for a different user trying to delete another user's post
+
     });
 });
