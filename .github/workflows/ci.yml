@@ -43,11 +43,28 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      # install heroku cli
+      - name: Install Heroku CLI
+        run: curl https://cli-assets.heroku.com/install.sh | sh
+
+      # check if app exists before trying to create it
+      - name: Check if Heroku app exists
+        env: 
+          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+        run: |
+          if ! heroku apps:info the-tech-blog7 &> /dev/null; then
+            echo "App does not exist, creating..."
+            heroku apps:create the-tech-blog7
+          else
+            echo "App already exists, continuing..."
+          fi
+      # deploy using action
       - name: Deploy to Heroku
         uses: akhileshns/heroku-deploy@v3.12.14
         with: 
           heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
           heroku_app_name: "the-tech-blog7"
           heroku_email: ${{ secrets.HEROKU_EMAIL }}
+          dontautocreate: true # skip auto-creation (handle manually)
         env:
           HD_JAWSDB_URL: ${{ secrets.JAWSDB_URL }}
