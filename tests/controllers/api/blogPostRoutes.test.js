@@ -2,7 +2,6 @@ const request = require('supertest');
 const blogPostRoutes = require('../../../controllers/api/blogPostRoutes');
 const setupTestApp = require('../../test-utils/setup-test-app');
 const { createTestFixtures } = require('../../test-utils/test-fixtures');
-const { setDefaultHighWaterMark } = require('supertest/lib/test');
 
 describe('BlogPost Routes', () => {
     let app;
@@ -199,8 +198,8 @@ describe('BlogPost Routes', () => {
                 .put(`/api/blogposts/${fixtures.testBlogPost.id}`)
                 .send(updatePost);
             
-            // should be 404 (Not Found)
-            expect(404).toContain(response.statusCode);
+            // should be 403 (forbidden)
+            expect(response.statusCode).toBe(403);
         });
     });
 

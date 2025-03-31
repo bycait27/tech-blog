@@ -92,6 +92,26 @@ router.put('/:id', withAuth, async (req, res) => {
     try {
         console.log('Received data:', req.body);
 
+        // first, check if the blog post exists and belongs to the user
+        const blogPost = await BlogPost.findOne({
+            where: {
+                id: req.params.id,
+            },
+        });
+
+        // ff no blog post found with this ID
+        if (!blogPost) {
+            res.status(404).json({ message: 'No blog post found with this id!' });
+            return;
+        }
+
+        // check if the user is the owner of this blog post
+        if (blogPost.user_id !== req.session.user_id) {
+            res.status(403).json({ message: 'You can only edit your own posts!' });
+            return;
+        }
+
+        // if auth passes, proceed with update
         const [updatedRows] = await BlogPost.update(
             {
                 title: req.body.title,
