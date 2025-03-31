@@ -110,7 +110,7 @@ describe('Comment Routes', () => {
     // test DELETE comment by id
     describe('DELETE /api/comments/id', () => {
         // TODO: test for authenticated user
-        it('should delete a blogpost by id', async () => {
+        it('should delete a comment by id', async () => {
              // create authenticated app
              const authApp = setupTestApp(
                 commentRoutes,
