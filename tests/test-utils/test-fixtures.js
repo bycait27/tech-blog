@@ -60,3 +60,10 @@ async function createTestFixtures() {
 }
 
 module.exports = { createTestFixtures };
+
+// Add this to prevent Jest from complaining about missing tests
+describe('Test Fixtures', () => {
+  it('exports createTestFixtures function', () => {
+    expect(typeof createTestFixtures).toBe('function');
+  });
+});

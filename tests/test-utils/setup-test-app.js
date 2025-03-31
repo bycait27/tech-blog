@@ -47,3 +47,10 @@ function setupTestApp(routerModule, mountPath = '/', options = {}) {
 }
 
 module.exports = setupTestApp;
+
+// Add this to prevent Jest from complaining about missing tests
+describe('Setup Test App', () => {
+  it('exports setupTestApp function', () => {
+    expect(typeof setupTestApp).toBe('function');
+  });
+});
