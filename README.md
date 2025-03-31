@@ -5,19 +5,21 @@ A CMS-Style tech blog site for developers that follows the MVC paradigm.
 <img src="./public/assets/home.png" width="500" alt="Homepage">
 
 ## Table of Contents
-- [Overview](#overview)
-- [Features](#features)
-- [Technologies](#technologies)
-- [Installation](#installation)
-- [Usage](#usage)
-- [API Documentation](#api-documentation)
-- [Project Structure](#project-structure)
-- [Live Demo](#live-demo)
-- [Challenges and Solutions](#challenges-and-solutions)
-- [Future Improvements](#future-improvements)
-- [Learning Outcomes](#learning-outcomes)
-- [License](#license)
-- [Contact](#contact)
+- [📝 Overview](#overview)
+- [✨ Features](#features)
+- [🛠️ Technologies](#technologies)
+- [🧪 Testing](#testing)
+- [🔧 Installation](#installation)
+- [📂 Project Structure](#project-structure)
+- [📚 Usage](#usage)
+- [🔌 API Documentation](#api-documentation)
+- [🌐 Live Demo](#live-demo)
+- [🧩 Challenges and Solutions](#challenges-and-solutions)
+- [🚀 Future Improvements](#future-improvements)
+- [📊 Learning Outcomes](#learning-outcomes)
+- [⚙️ CI/CD](#cicd)
+- [📜 License](#license)
+- [📫 Contact](#contact)
 
 ## Overview
 
@@ -27,25 +29,24 @@ This project addresses the need for developers to have a dedicated space to publ
 
 ## Features
 
-<!-- add screenshots to show features in use -->
+- **User Authentication:** Secure login and registration system
+  
+  <img src="./public/assets/login-singup2.png" width="500" alt="Login and Signup">    
 
-- **User Authentication:**  Secure login and registration powered by express-session.  
+- **Content Management:** Create, edit, and delete your tech blog posts
+  
+  <div style="display: flex; gap: 10px; margin-bottom: 15px;">
+  <img src="./public/assets/new-post.png" width="250" alt="Create New Post">
+  <img src="./public/assets/edit-post.png" width="250" alt="Edit Post">
+  </div>
 
-<img src="./public/assets/login-singup2.png" width="500" alt="Login and Signup">    
+- **Personal Dashboard:** Manage all your content in one place
+  
+  <img src="./public/assets/dashboard.png" width="500" alt="User Dashboard">
 
-- **Blog Post Management:** Ability to create, edit, and delete blog posts.    
-
-<img src="./public/assets/new-post.png" width="500" alt="Create New Post"> . 
-
-<img src="./public/assets/edit-post.png" width="500" alt="Edit Post">
-
-- **User Dashboard:** Users can access and manage their blog posts on their own dashboard.  
-
-<img src="./public/assets/dashboard.png" width="500" alt="User Dashboard">
-
-- **User Interaction:** Ability to comment on other user's posts.     
-
-<img src="./public/assets/blogpost-signedin.png" width="500" alt="Comments">
+- **Community Interaction:** Comment on posts from other developers
+  
+  <img src="./public/assets/blogpost-signedin.png" width="500" alt="Comments">
 
 ## Technologies
 
@@ -53,17 +54,40 @@ This project addresses the need for developers to have a dedicated space to publ
 - **Markup & Structure:** HTML5
 - **Templating Engine:** Handlebars.js
 - **Styling:** CSS3
+
 ### Backend
 - **Runtime Environment:** Node.js
 - **Framework:** Express.js
 - **Authentication:** Bcrypt, express-session
 - **Database:** JawsDB with MySQL
 - **ORM:** Sequelize  
-<!-- JavaScript   -->
+
 ### DevOps
-- **CI/CD:** GitHub Actions (coming soon)
-- **Hosting:** Heroku
-### Testing (coming soon)
+- **CI/CD:** GitHub Actions
+- **Deployment:** Automatic deployment to Heroku
+- **Test Coverage:** Coverage reports as GitHub artifacts
+
+## Testing
+![Coverage](https://img.shields.io/badge/coverage-86%25-brightgreen)
+
+This project includes comprehensive test coverage across multiple layers:
+- **Framework:** Jest
+- **Testing Types:** Unit, Integration, Controller, Model
+- **Coverage Analysis:** Jest Coverage Reports
+- **API Testing:** Supertest  
+
+### Running Tests
+
+```bash
+# run all tests
+npm test
+
+# run tests with coverage analysis
+npm run test:coverage
+
+# run specific test files
+npm test -- tests/models/User.test.js
+```
 
 ## Installation 
 
@@ -101,6 +125,33 @@ npm start
 # navigate to server (localhost:3001)
 ```
 
+## Project Structure
+
+```
+the-tech-blog/
+|
+|-- .github/                   # GitHub Actions workflow files
+|   |-- workflows/             # CI/CD pipeline configurations
+|-- config/                    # Connection config 
+|-- controllers/               # Basic CRUD operations
+|   |-- api/                   # API routes
+|-- db/                        # Database schema
+|-- models/                    # Database models
+|-- public/ 
+    |-- assets/                # App images for README 
+|   |-- css                    # Styles for frontend
+|   |-- js                     # Frontend JavaScript
+|-- seeds/                     # JSON data and seed functions
+|-- tests/                     # Test files
+|   |-- controllers/           # Controller tests
+|   |-- models/                # Model tests
+|   |-- utils/                 # Utility function tests
+|   |-- test-utils/            # Testing utilities
+|-- utils/                     # Extra helper functions
+|-- views/                     # Handlebars.js templates
+|-- server.js                  # Entry point
+```
+
 ## Usage
 
 <!-- step-by-step guide on how to use the app with code examples where appropriate -->
@@ -113,7 +164,31 @@ After installing and running the application, you can:
 
 ### Example API usage
 ```javascript
-// add example here
+// example: get all blog posts
+router.get('/', async (req, res) => {
+    try {
+        const blogPostData = await BlogPost.findAll({
+            include: [
+                {
+                    model: Comment,
+                    attributes: ['id', 'content', 'date_created', 'user_id', 'blogpost_id'],
+                    include: {
+                        model: User,
+                        attributes: ['username'],
+                    },
+                },
+                {
+                    model: User,
+                    attributes: ['username'],
+                },
+            ],
+        });
+
+        res.status(200).json(blogPostData);
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
 ```
 
 ## API Documentation
@@ -134,26 +209,6 @@ The API follows RESTful principles:
 | `/api/comments`      | GET    | Get all comments    | No                      |
 | `/api/comments`      | POST   | Create a comment    | Yes                     |
 | `/api/comments/:id`  | DELETE | Delete a comment    | Yes                     |
-
-## Project Structure
-
-```
-the-tech-blog/
-|
-|-- assets/                    # app images for README 
-|-- config/                    # connection config 
-|-- controllers/               # basic CRUD operations
-   |-- api/
-|-- db/                        # database schema
-|-- models/                    # database models
-|-- public/ 
-   |-- css                     # styles for frontend
-   |-- js                      # backend functions
-|-- seeds/                     # JSON data and seed functions
-|-- utils/                     # extra helper functions
-|-- views/                     # handlebars.js
-|-- server.js                  # entry point
-```
 
 ## Live Demo
 
@@ -198,6 +253,39 @@ Check out the live application: [The Tech Blog](https://the-tech-blog7-f8ee98277
 - **Data Seeding:** Utilized JSON for initial data population, which streamlined testing and development processes.
 
 - **RESTful API Design:** Developed a comprehensive API following RESTful principles for data operations.
+
+- **Test-Driven Development:** Implemented comprehensive testing strategies across models, controllers, and utilities, ensuring code reliability and easier maintenance.
+
+- **CI/CD Implementation:** Set up a complete GitHub Actions workflow for continuous integration and deployment, automating testing and deployment to Heroku.
+
+- **Code Coverage Analysis:** Used Jest's coverage tools to identify and address gaps in test coverage, improving overall code quality.
+
+## CI/CD 
+[![The Tech Blog CI](https://github.com/bycait27/tech-blog/actions/workflows/ci.yml/badge.svg)](https://github.com/bycait27/tech-blog/actions/workflows/ci.yml)
+
+This project uses GitHub Actions for automated testing and deployment.
+
+### CI Pipeline
+
+On every push and pull request to the `main` and `develop` branches:
+- Runs the complete test suite
+- Generates coverage reports
+- Validates code quality
+
+### CD Pipeline
+
+On successful merges to the `main` branch:
+- Automatically deploys to Heroku
+- Sets up necessary environment variables
+- Updates the production database schema if needed
+
+### Deployment Workflow
+
+1. Feature development occurs on feature branches
+2. Pull requests are made to the `develop` branch
+3. After CI passes and code review, changes are merged to `develop`
+4. When ready for production, `develop` is merged to `main`
+5. GitHub Actions automatically deploys to Heroku
 
 ## License 
 
