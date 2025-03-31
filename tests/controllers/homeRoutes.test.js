@@ -60,6 +60,7 @@ describe('Home Routes', () => {
             const response = await request(app).get(`/blogpost/${testBlogPost.id}`);
             expect(response.statusCode).toBe(200);
             expect(response.text).toContain('Test Home Post');
+            expect(response.text).toContain('This is a test comment for home routes.');
         });
 
         it('should display 404 for non-existent post', async () => {
@@ -70,9 +71,23 @@ describe('Home Routes', () => {
 
     // test GET login/signup page
     describe('GET /login', () => {
-        it('should display login and signup page', async () => {
+        it('should display login and signup page when not logged in', async () => {
             const response = await request(app).get('/login');
             expect(response.statusCode).toBe(200);
+            expect(response.text).not.toContain('logged_in');
+        });
+
+        it('should redirect to dashboard when already logged in', async () => {
+            // create authenticated app
+            const authApp = setupTestApp(
+                homeRoutes,
+                '/',
+                { authUser: testUser }
+            );
+
+            const response = await request(authApp).get('/login');
+            expect(response.statusCode).toBe(302);
+            expect(response.headers.location).toBe('/dashboard');
         });
     });
 });
