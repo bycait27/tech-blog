@@ -4,7 +4,7 @@
     "seed": "node seeds/seed.js",
     "test": "cross-env NODE_ENV=test jest --forceExit",
     "test:watch": "cross-env NODE_ENV=test jest --watch",
-    "test:coverage": "cross-env NODE_ENV=test jest --coverage"
+    "test:coverage": "cross-env NODE_ENV=test jest --forceExit --coverage"
   },
   "dependencies": {
     "bcrypt": "^5.1.1",
