@@ -21,13 +21,13 @@ A CMS-Style tech blog site for developers that follows the MVC paradigm.
 - [📜 License](#license)
 - [📫 Contact](#contact)
 
-## Overview
+## 📝 Overview
 
 The Tech Blog is a CMS-style blog site that allows developers to publish articles, blog posts, and share their thoughts on tech concepts. Built with the MVC paradigm using Handlebars.js, MySQL, Express.js, and Node.js, this platform enables users to create an account, write posts, edit their content, and interact with other developers through comments.
 
 This project addresses the need for developers to have a dedicated space to publish their insights and learn from others in a community-focused environment. It demonstrates my ability to create full-stack applications with user authentication and database management.
 
-## Features
+## ✨ Features
 
 - **User Authentication:** Secure login and registration system
   
@@ -48,7 +48,7 @@ This project addresses the need for developers to have a dedicated space to publ
   
   <img src="./public/assets/blogpost-signedin.png" width="500" alt="Comments">
 
-## Technologies
+## 🛠️ Technologies
 
 ### Frontend
 - **Markup & Structure:** HTML5
@@ -67,7 +67,7 @@ This project addresses the need for developers to have a dedicated space to publ
 - **Deployment:** Automatic deployment to Heroku
 - **Test Coverage:** Coverage reports as GitHub artifacts
 
-## Testing
+## 🧪 Testing
 ![Coverage](https://img.shields.io/badge/coverage-86%25-brightgreen)
 
 This project includes comprehensive test coverage across multiple layers:
@@ -89,7 +89,7 @@ npm run test:coverage
 npm test -- tests/models/User.test.js
 ```
 
-## Installation 
+## 🔧 Installation 
 
 ### Prerequisites
 <!-- add prerequisites here -->
@@ -125,7 +125,7 @@ npm start
 # navigate to server (localhost:3001)
 ```
 
-## Project Structure
+## 📂 Project Structure
 
 ```
 the-tech-blog/
@@ -152,7 +152,7 @@ the-tech-blog/
 |-- server.js                  # Entry point
 ```
 
-## Usage
+## 📚 Usage
 
 <!-- step-by-step guide on how to use the app with code examples where appropriate -->
 
@@ -191,7 +191,7 @@ router.get('/', async (req, res) => {
 });
 ```
 
-## API Documentation
+## 🔌 API Documentation
 The API follows RESTful principles: 
 
 | Endpoint             | Method | Description         | Authentication Required |
@@ -210,11 +210,11 @@ The API follows RESTful principles:
 | `/api/comments`      | POST   | Create a comment    | Yes                     |
 | `/api/comments/:id`  | DELETE | Delete a comment    | Yes                     |
 
-## Live Demo
+## 🌐 Live Demo
 
 Check out the live application: [The Tech Blog](https://the-tech-blog7-f8ee982770ad.herokuapp.com/)
 
-## Challenges and Solutions
+## 🧩 Challenges and Solutions
 
 <!-- description of a technical challenge faced and how it was solved and what was learned -->
 
@@ -227,7 +227,7 @@ Check out the live application: [The Tech Blog](https://the-tech-blog7-f8ee98277
 - **Challenge: Comment System Implementation**
   - **Solution:** Created a many-to-many relationship between users, posts, and comments using Sequelize associations, enabling proper data retrieval and display while maintaining data integrity.
 
-## Future Improvements
+## 🚀 Future Improvements
 
 <!-- Functionality I want to add: -->
 - Tags for different tech topics 
@@ -236,7 +236,7 @@ Check out the live application: [The Tech Blog](https://the-tech-blog7-f8ee98277
 - Link to a user's posts
 - The ability to bookmark your favorite posts
 
-## Learning Outcomes
+## 📊 Learning Outcomes
 
 <!-- go into more detail with these -->
 
@@ -260,7 +260,7 @@ Check out the live application: [The Tech Blog](https://the-tech-blog7-f8ee98277
 
 - **Code Coverage Analysis:** Used Jest's coverage tools to identify and address gaps in test coverage, improving overall code quality.
 
-## CI/CD 
+## ⚙️ CI/CD 
 [![The Tech Blog CI](https://github.com/bycait27/tech-blog/actions/workflows/ci.yml/badge.svg)](https://github.com/bycait27/tech-blog/actions/workflows/ci.yml)
 
 This project uses GitHub Actions for automated testing and deployment.
@@ -287,13 +287,13 @@ On successful merges to the `main` branch:
 4. When ready for production, `develop` is merged to `main`
 5. GitHub Actions automatically deploys to Heroku
 
-## License 
+## 📜 License 
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)  
 
 see LICENSE file for more details
 
-## Contact
+## 📫 Contact
 
 **GitHub:** [@bycait27](https://github.com/bycait27)  
 **Portfolio Website:** [caitlinash.io](https://caitlinash.io/)  
