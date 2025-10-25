@@ -5,21 +5,39 @@ A CMS-Style tech blog site for developers that follows the MVC paradigm.
 <img src="./public/assets/home.png" width="500" alt="Homepage">
 
 ## Table of Contents
-- [📝 Overview](#overview)
-- [✨ Features](#features)
-- [🛠️ Technologies](#technologies)
-- [🧪 Testing](#testing)
-- [🔧 Installation](#installation)
-- [📂 Project Structure](#project-structure)
-- [📚 Usage](#usage)
-- [🔌 API Documentation](#api-documentation)
-- [🌐 Live Demo](#live-demo)
-- [🧩 Challenges and Solutions](#challenges-and-solutions)
-- [🚀 Future Improvements](#future-improvements)
-- [📊 Learning Outcomes](#learning-outcomes)
-- [⚙️ CI/CD](#cicd)
-- [📜 License](#license)
-- [📫 Contact](#contact)
+- [The Tech Blog](#the-tech-blog)
+  - [Table of Contents](#table-of-contents)
+  - [📝 Overview](#-overview)
+  - [✨ Features](#-features)
+  - [🛠️ Technologies](#️-technologies)
+    - [Frontend](#frontend)
+    - [Backend](#backend)
+    - [DevOps](#devops)
+  - [🧪 Testing](#-testing)
+    - [Running Tests](#running-tests)
+  - [🔧 Installation](#-installation)
+    - [Prerequisites](#prerequisites)
+    - [Setup Instructions](#setup-instructions)
+  - [🐳 Running with Docker](#-running-with-docker)
+    - [Prerequisites](#prerequisites-1)
+    - [Setup Instructions](#setup-instructions-1)
+    - [First Time Setup](#first-time-setup)
+    - [Daily Usage](#daily-usage)
+    - [Fresh Start (wipes all data)](#fresh-start-wipes-all-data)
+  - [📂 Project Structure](#-project-structure)
+  - [📚 Usage](#-usage)
+    - [Example API usage](#example-api-usage)
+  - [🔌 API Documentation](#-api-documentation)
+  - [🌐 Live Demo](#-live-demo)
+  - [🧩 Challenges and Solutions](#-challenges-and-solutions)
+  - [🚀 Future Improvements](#-future-improvements)
+  - [📊 Learning Outcomes](#-learning-outcomes)
+  - [⚙️ CI/CD](#️-cicd)
+    - [CI Pipeline](#ci-pipeline)
+    - [CD Pipeline](#cd-pipeline)
+    - [Deployment Workflow](#deployment-workflow)
+  - [📜 License](#-license)
+  - [📫 Contact](#-contact)
 
 ## 📝 Overview
 
@@ -63,6 +81,7 @@ This project addresses the need for developers to have a dedicated space to publ
 - **ORM:** Sequelize  
 
 ### DevOps
+- **Containerization:** Docker, Docker Compose
 - **CI/CD:** GitHub Actions
 - **Deployment:** Automatic deployment to Heroku
 - **Test Coverage:** Coverage reports as GitHub artifacts
@@ -104,7 +123,7 @@ npm test -- tests/models/User.test.js
 git clone git@github.com:bycait27/tech-blog.git
 
 # navigate to project directory
-cd the-tech-blog
+cd tech-blog
 
 # install dependencies
 npm install
@@ -125,10 +144,66 @@ npm start
 # navigate to server (localhost:3001)
 ```
 
+## 🐳 Running with Docker
+
+### Prerequisites
+- Docker
+- Docker Compose
+
+### Setup Instructions
+```bash
+# clone the repo (ssh)
+git clone git@github.com:bycait27/tech-blog.git
+
+# navigate to project directory
+cd tech-blog
+
+# create .env file in root of project
+# add environment variables
+DB_NAME=blog_db
+DB_USER=root
+DB_PASSWORD=your_password_here
+DB_HOST=db
+SESSION_SECRET=your_session_secret
+```
+
+### First Time Setup
+```bash
+# start containers in background
+docker compose up -d
+
+# seed the database (only needed once)
+docker compose exec server npm run seed
+
+# view the application at http://localhost:3001
+```
+
+### Daily Usage
+```bash
+# start containers
+docker compose up
+
+# or run in background
+docker compose up -d
+
+# view logs (if running in background)
+docker compose logs -f
+
+# stop containers (keeps your data)
+docker compose down
+```
+
+### Fresh Start (wipes all data)
+```bash
+docker compose down -v
+docker compose up -d
+docker compose exec server npm run seed
+```
+
 ## 📂 Project Structure
 
 ```
-the-tech-blog/
+tech-blog/
 |
 |-- .github/                   # GitHub Actions workflow files
 |   |-- workflows/             # CI/CD pipeline configurations
@@ -149,6 +224,8 @@ the-tech-blog/
 |   |-- test-utils/            # Testing utilities
 |-- utils/                     # Extra helper functions
 |-- views/                     # Handlebars.js templates
+|-- compose.yml         # Docker Compose configuration
+|-- Dockerfile                 # Docker image definition
 |-- server.js                  # Entry point
 ```
 
@@ -259,6 +336,8 @@ Check out the live application: [The Tech Blog](https://the-tech-blog7-f8ee98277
 - **CI/CD Implementation:** Set up a complete GitHub Actions workflow for continuous integration and deployment, automating testing and deployment to Heroku.
 
 - **Code Coverage Analysis:** Used Jest's coverage tools to identify and address gaps in test coverage, improving overall code quality.
+  
+- **Containerization:** Containerized the full-stack application using Docker and Docker Compose, ensuring consistent development environments and simplified deployment.
 
 ## ⚙️ CI/CD 
 [![The Tech Blog CI](https://github.com/bycait27/tech-blog/actions/workflows/ci.yml/badge.svg)](https://github.com/bycait27/tech-blog/actions/workflows/ci.yml)
