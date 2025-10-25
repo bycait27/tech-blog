@@ -1,0 +1,36 @@
+services:
+  server:
+    build: .
+    container_name: tech-blog-app 
+    restart: unless-stopped
+    environment:
+      NODE_ENV: production
+      DB_HOST: db 
+    ports:
+      - 3001:3001
+    env_file:
+      - .env 
+    depends_on:
+      db:
+        condition: service_healthy
+  db:
+    image: mysql:8.0
+    container_name: tech-blog-db
+    restart: always
+    environment:
+      MYSQL_DATABASE: ${DB_NAME}
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+    ports:
+      - 3306:3306
+    volumes:
+      - db-data:/var/lib/mysql 
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-p${DB_PASSWORD}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+
+volumes:
+  db-data:
+
